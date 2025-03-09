@@ -83,7 +83,7 @@ print("Classification Report:\n", classification_report(y_test,y_pred))
 joblib.dump(model, "stroke_risk_model.pkl")
 
 # Save the encoder and scalar
-joblib.dump(scaler, "scalar.pkl")
+joblib.dump(scaler, "scaler.pkl")
 joblib.dump(encoders,"encoders.pkl")
 
 print("Model and preprocessing tools saved successfully!")
