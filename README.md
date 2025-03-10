@@ -88,11 +88,20 @@ patient = {
 }
 
 # Process the input data (similar to model.py preprocessing)
-# ...
+# For example
+processed_input = pd.DataFrame([patient])
+for col in encoders.keys():
+    processed_input[col] = encoders[col].transform(processed_input[col]);
+
+# Scale input features
+processed_input_scaled = scaler.transform(processed_input)
 
 # Make prediction
-risk_prediction = model.predict(processed_input)[0]
+stroke_probability = model.predict_proba(processed_input_scaled)[0][1]
+risk_prediction = model.predict(processed_input_scaled)[0]
 risk_level = "High" if risk_prediction == 1 else "Low"
+# # Print result a
+print(f"\nStroke Risk Probability: {stroke_probability:.2%}")
 print(f"Stroke Risk: {risk_level}")
 ```
 
